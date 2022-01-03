@@ -1,0 +1,10 @@
+# TODO: add proper schema here
+
+type User {
+	id: String!
+	name: String!
+}
+
+type Query {
+	user(id: String!): User
+}

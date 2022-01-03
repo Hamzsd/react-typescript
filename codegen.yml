@@ -1,0 +1,37 @@
+schema:
+    - ./schema.graphql
+documents:
+    - ./src/**/*.graphql
+generates:
+    ./src/operations.tsx:
+        plugins:
+            - typescript
+        config:
+            withHooks: true
+            withHOC: false
+            withComponent: false
+            addDocBlocks: false
+            reactApolloVersion: 3
+            scalars:
+                Timestamp: Date
+    ./src:
+        preset: near-operation-file
+        presetConfig:
+            extension: .gql.ts
+            baseTypesPath: "./operations.tsx"
+        plugins:
+            - typescript-operations
+            - typescript-react-apollo:
+                  withHooks: true
+                  withHOC: false
+                  withComponent: false
+                  addDocBlocks: false
+                  scalars:
+                      Timestamp: Date
+                  reactApolloVersion: 3
+                  withRefetchFn: true
+    ./src/fragmentTypes.json:
+        plugins:
+            - fragment-matcher
+        config:
+            apolloClientVersion: 3

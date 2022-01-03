@@ -1,0 +1,5 @@
+query AppPage {
+	user(id: "test") {
+		id
+	}
+}
