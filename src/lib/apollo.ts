@@ -5,18 +5,18 @@ import {
 	InMemoryCache,
 } from "@apollo/client";
 
-import fragmentTypes from "../fragmentTypes.json";
+// import fragmentTypes from "../fragmentTypes.json";
 
 export const createApolloClient = () => {
 	const apolloClient = new ApolloClient({
 		link: ApolloLink.from([
 			new HttpLink({
-				uri: import.meta.env.VITE_BACKEND_URL + "/graphql",
-				credentials: "same-origin",
+				uri: "https://localhost:44347/graphql/"
+				// credentials: "same-origin",
 			}),
 		]),
 		cache: new InMemoryCache({
-			possibleTypes: fragmentTypes.possibleTypes,
+			// possibleTypes: fragmentTypes.possibleTypes,
 		}),
 		defaultOptions: {
 			query: {
