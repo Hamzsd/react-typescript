@@ -42,12 +42,12 @@ const MATERIAL_QUERY = gql `
 }`;
 
 export default function MaterialsTable(){
+  
     const { loading, data } =  useQuery<listMaterials>(MATERIAL_QUERY);
     if (loading) return <p>Loading...</p>;
-    console.log(data?.materials)
     return (
         <> 
-        <Table title="Meta Materials" row={data?.materials} col={columns}/>
+          <Table title="Materials" row={data?.materials} col={columns}/>
         </>
     )
 }

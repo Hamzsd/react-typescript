@@ -10,6 +10,12 @@ import IconExpandLess from '@material-ui/icons/ExpandLess'
 import IconExpandMore from '@material-ui/icons/ExpandMore'
 import {useNavigate} from 'react-router-dom';
 
+import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PublishIcon from '@mui/icons-material/Publish';
+
 const AppMenu: React.FC = () => {
   const navigate = useNavigate();
   const home = useCallback(() => navigate('/', {replace: true}), [navigate]);
@@ -27,30 +33,35 @@ const AppMenu: React.FC = () => {
     <List component="nav" className={classes.appMenu} disablePadding>
       <ListItem button className={classes.menuItem}  onClick={home}>
         <ListItemIcon className={classes.menuItemIcon}>
+          <HomeIcon/>
         </ListItemIcon>
         <ListItemText primary="Home" />
       </ListItem>
 
       <ListItem button className={classes.menuItem}>
         <ListItemIcon className={classes.menuItemIcon}>
+          <LoginIcon/>
         </ListItemIcon>
         <ListItemText primary="Login" />
       </ListItem>
 
       <ListItem button className={classes.menuItem}>
         <ListItemIcon className={classes.menuItemIcon}>
+          <AdminPanelSettingsIcon/>
         </ListItemIcon>
         <ListItemText primary="Admin" />
       </ListItem>
 
       <ListItem button className={classes.menuItem}>
         <ListItemIcon className={classes.menuItemIcon}>
+          <SettingsIcon/>
         </ListItemIcon>
         <ListItemText primary="Settings" />
       </ListItem>
 
       <ListItem button className={classes.menuItem}>
         <ListItemIcon className={classes.menuItemIcon}>
+          <PublishIcon/>
         </ListItemIcon>
         <ListItemText primary="Import" />
       </ListItem>
@@ -108,7 +119,7 @@ const useStyles = makeStyles(theme =>
       width: drawerWidth,
     },
     menuItemIcon: {
-      color: '#97c05c',
+      color: '#fbf2f0',
     },
   }),
 )

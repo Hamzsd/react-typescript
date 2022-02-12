@@ -4,28 +4,16 @@ import DataTable from "react-data-table-component";
 import Card from "@material-ui/core/Card";
 import SortIcon from "@material-ui/icons/ArrowDownward";
 
-const columns = [
-  {
-    name: "Name",
-    selector: "name",
-    sortable: true,
-    center: true
-  },
-  {
-    name: "Description UL",
-    selector: "description",
-    sortable: true,
-    center: true
-  },
-  {
-    name: "Meta Material",
-    selector: "metaMaterial",
-    sortable: true,
-    center: true
-  },
-];
-
 export default function Table(props:{title?: string, row?:any[], col?:any[]}) {
+  const [selectedData, setSelectedData] = React.useState();
+  
+    const handleChange = (state) => {
+    setSelectedData(state.selectedRows);
+    
+  };
+  
+  console.log(selectedData);
+
   return (
     <div>
       <Card>
@@ -37,6 +25,8 @@ export default function Table(props:{title?: string, row?:any[], col?:any[]}) {
           sortIcon={<SortIcon />}
           pagination
           selectableRows
+          onSelectedRowsChange={handleChange}
+
         />
       </Card>
     </div>

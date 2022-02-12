@@ -33,14 +33,14 @@ const META_MATERIAL_QUERY = gql `
   }
 }`;
 
+
 export default function MetaMaterialsTable(){
     
     const { loading, data } =  useQuery<listMetaMaterials>(META_MATERIAL_QUERY);
     if (loading) return <p>Loading...</p>;
-    console.log(data?.metaMaterials)
     return (
         <> 
-        <Table title="Meta Materials" row={data?.metaMaterials} col={columns} />
+          <Table title="Meta Materials" row={data?.metaMaterials} col={columns} />
         </>
     )
 }

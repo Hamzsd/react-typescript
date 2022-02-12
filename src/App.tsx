@@ -24,7 +24,7 @@ const App: React.FC = () => {
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
          <div>
-           <h1>IG Creator</h1>
+           <h2>IG Creator</h2>
            <Routes>
             <Route path ="/" element={<Home/>}></Route>
             <Route path="/materials" element={<Materials/>}/>
