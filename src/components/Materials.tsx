@@ -1,5 +1,11 @@
+import React from "react";
+import ReactDOM from "react-dom";
 import { useQuery, gql } from '@apollo/client';
 import Table from './Table';
+import AddMaterial from './AddMaterial';
+import DeleteMaterial from './DeleteMaterial';
+import EditMaterial from './EditMaterial';
+import Stack from '@mui/material/Stack';
 
 const columns = [
     {
@@ -41,13 +47,24 @@ const MATERIAL_QUERY = gql `
   }
 }`;
 
+
+
+
+
 export default function MaterialsTable(){
-  
     const { loading, data } =  useQuery<listMaterials>(MATERIAL_QUERY);
     if (loading) return <p>Loading...</p>;
     return (
-        <> 
+        <div>
+        <Stack direction="row" spacing={1}   justifyContent="right">
+            <AddMaterial/>
+            <EditMaterial/>
+            <DeleteMaterial/>
+        </Stack>
+        <br></br>
+        <div className="row">
           <Table title="Materials" row={data?.materials} col={columns}/>
-        </>
+        </div>
+    </div>
     )
 }

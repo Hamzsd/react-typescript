@@ -31,6 +31,8 @@ const SAVE_MATERIAL = gql `mutation addMat($name:String!,$desc:String!,$mMat:Str
  }`;
 
 export default function FormDialog() {
+
+    console.log("s")
     const [name, setName] = useState('');
     const [desc, setDescription] = useState('');
     const [mMat, setMetaMaterial] = useState('');
@@ -57,7 +59,6 @@ export default function FormDialog() {
         </Button>
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Add a Material</DialogTitle>
-
             <DialogContent>
                 <Box
                     component="form"
@@ -94,7 +95,7 @@ export default function FormDialog() {
             </DialogContent>
             <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={() => name && desc && mMat && saveMaterial() && console.log(name,desc,mMat)}>Add Material</Button>
+            <Button onClick={() => name && desc && mMat && saveMaterial() && console.log(name,desc,mMat)}>Add</Button>
             </DialogActions>
         </Dialog>
         </div>
