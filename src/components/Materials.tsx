@@ -6,6 +6,10 @@ import AddMaterial from './AddMaterial';
 import DeleteMaterial from './DeleteMaterial';
 import EditMaterial from './EditMaterial';
 import Stack from '@mui/material/Stack';
+import Card from "@material-ui/core/Card";
+import SortIcon from "@material-ui/icons/ArrowDownward";
+import DataTable from "react-data-table-component";
+
 
 const columns = [
     {
@@ -47,23 +51,44 @@ const MATERIAL_QUERY = gql `
   }
 }`;
 
-
-
-
-
 export default function MaterialsTable(){
+  const [selectedData, setSelectedData] = React.useState<material[]>([]);
+  
+  const handleChange = (state) => {
+    setSelectedData(state.selectedRows);
+    
+  };
+  var matName: string[] = [];
+  var editMat: material = {name:"",description:"",metaMaterial:""};
+  selectedData.forEach(function (mats) {
+    matName.push(mats.name)
+    editMat = mats
+  }); 
+
     const { loading, data } =  useQuery<listMaterials>(MATERIAL_QUERY);
     if (loading) return <p>Loading...</p>;
     return (
         <div>
-        <Stack direction="row" spacing={1}   justifyContent="right">
+        <Stack direction="row" spacing={1} justifyContent="right">
             <AddMaterial/>
-            <EditMaterial/>
-            <DeleteMaterial/>
+            <EditMaterial name={editMat.name} desc={editMat.description} mMat={editMat.metaMaterial}/>
+            <DeleteMaterial id={matName}/>
         </Stack>
         <br></br>
         <div className="row">
-          <Table title="Materials" row={data?.materials} col={columns}/>
+          {/* <Table title="Materials" row={data?.materials} col={columns}/> */}
+          <Card>
+            <DataTable
+              title="Materials"
+              columns={columns}
+              data={data?.materials}
+              defaultSortField="Name"
+              sortIcon={<SortIcon />}
+              pagination
+              selectableRows
+              onSelectedRowsChange={handleChange}
+            />
+          </Card>
         </div>
     </div>
     )

@@ -11,15 +11,9 @@ interface material {
   metaMaterial: string;
 }
 
-export default function Table(props:{title?: string, row?:any[], col?:any[]}) {
-  const [selectedData, setSelectedData] = React.useState<material|undefined>();
-  
-  const handleChange = (state) => {
-  setSelectedData(state.selectedRows);
-  };
-  console.log(selectedData);
 
-  
+export default function Table(props:{title?: string, row?:any[], col?:any[]}) {
+
   return (
     <div>
       <Card>
@@ -31,7 +25,6 @@ export default function Table(props:{title?: string, row?:any[], col?:any[]}) {
           sortIcon={<SortIcon />}
           pagination
           selectableRows
-          onSelectedRowsChange={handleChange}
         />
       </Card>
     </div>

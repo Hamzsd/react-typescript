@@ -6,11 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Box from '@mui/material/Box';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import { useQuery, useMutation, gql } from '@apollo/client';
-import AddIcon from '@mui/icons-material/Add';
-import Stack from '@mui/material/Stack';
 import EditIcon from '@mui/icons-material/Edit';
 
 
@@ -20,11 +16,8 @@ const UPDATE_MATERIAL_QUERY = gql `mutation editMat($name:String!,$newName:Strin
   }`;
   
 
-export default function EditMaterial(){
-    const [name, setName] = useState('');
+export default function EditMaterial(props:{name?:string,desc?:string, mMat?:string}){
     const [updateName, setNewName] = useState('');
-    const [desc, setDescription] = useState('');
-    const [mMat, setMetaMaterial] = useState('');
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
@@ -33,8 +26,8 @@ export default function EditMaterial(){
         setOpen(false);
     };
 
-    const [saveMaterial, { error, data:data1 }] = useMutation(UPDATE_MATERIAL_QUERY, {
-        variables: { name:name,desc:desc,mMat:mMat }
+    const [updateMaterial, { error, data:data1 }] = useMutation(UPDATE_MATERIAL_QUERY, {
+        variables: { name:props.name,newName:updateName,desc:props.desc,mMat:props.mMat }
       });
     return (
         <div>
@@ -55,26 +48,29 @@ export default function EditMaterial(){
                  <TextField
                      id="outlined-name"
                      label="Name"
-                     value={name}
-                     onChange={e=>setName(e.target.value)}
+                     value={props.name}
                  />
                 <TextField
-                        id="outlined-name"
-                        label="NewName"
-                        value={updateName}
-                        onChange={e=>setNewName(e.target.value)}
+                    id="outlined-name"
+                    label="NewName"
+                    value={updateName}
+                    onChange={e=>setNewName(e.target.value)}
                 />
                  <TextField
-                 id="outlined-name"
+                     id="outlined-name"
                      label="Description UL"
-                     value={desc}
-                     onChange={e=>setDescription(e.target.value)}
+                     value={props.desc}
                  />
-             </Box>
+                <TextField
+                     id="outlined-name"
+                     label="MetaMaterial"
+                     value={props.mMat}
+                 />
+            </Box>
          </DialogContent>
          <DialogActions>
          <Button onClick={handleClose}>Cancel</Button>
-         <Button onClick={() => name && desc && mMat && saveMaterial() && console.log(name,desc,mMat)}>Update</Button>
+         <Button onClick={() => props.name && updateName && props.desc && props.mMat && updateMaterial()}>Update</Button>
          </DialogActions>
      </Dialog>
         </div>

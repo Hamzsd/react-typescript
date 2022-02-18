@@ -32,7 +32,6 @@ const SAVE_MATERIAL = gql `mutation addMat($name:String!,$desc:String!,$mMat:Str
 
 export default function FormDialog() {
 
-    console.log("s")
     const [name, setName] = useState('');
     const [desc, setDescription] = useState('');
     const [mMat, setMetaMaterial] = useState('');
