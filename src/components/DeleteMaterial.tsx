@@ -6,17 +6,17 @@ import { useQuery, useMutation, gql } from '@apollo/client';
 
 
 const DELETE_MATERIAL_QUERY = gql `
-mutation delMat($name:String!) {
+mutation delMat($name:[String!]!) {
   deleteMaterial(name:$name)
 }`;
 
 export default function DeleteMaterial(props:{id:string[]}){
     const [delMaterial] = useMutation(DELETE_MATERIAL_QUERY, {
-        variables: { name:props.id.toString() }
+        variables: { name:props.id }
       });
     return (
         <div>
-            <Button variant="contained" color="error" size="small" onClick={() => props.id.toString() && delMaterial() && window.location.reload()}>
+            <Button variant="contained" color="error" size="small" onClick={() => props.id && delMaterial() && window.location.reload()}>
                 <DeleteIcon/>
             </Button>
         </div>

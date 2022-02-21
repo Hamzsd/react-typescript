@@ -42,6 +42,7 @@ interface listMaterials {
     materials: material[];
 }
 
+
 const MATERIAL_QUERY = gql `
 {
   materials {
@@ -51,13 +52,15 @@ const MATERIAL_QUERY = gql `
   }
 }`;
 
+
+
 export default function MaterialsTable(){
   const [selectedData, setSelectedData] = React.useState<material[]>([]);
-  
   const handleChange = (state) => {
     setSelectedData(state.selectedRows);
     
   };
+
   var matName: string[] = [];
   var editMat: material = {name:"",description:"",metaMaterial:""};
   selectedData.forEach(function (mats) {
@@ -65,8 +68,9 @@ export default function MaterialsTable(){
     editMat = mats
   }); 
 
-    const { loading, data } =  useQuery<listMaterials>(MATERIAL_QUERY);
-    if (loading) return <p>Loading...</p>;
+  const { loading, data } =  useQuery<listMaterials>(MATERIAL_QUERY);
+  if (loading) return <p>Loading...</p>;
+
     return (
         <div>
         <Stack direction="row" spacing={1} justifyContent="right">
@@ -82,11 +86,19 @@ export default function MaterialsTable(){
               title="Materials"
               columns={columns}
               data={data?.materials}
+              theme="dark"
               defaultSortField="Name"
               sortIcon={<SortIcon />}
               pagination
               selectableRows
+              pointerOnHover
+              highlightOnHover
+              responsive
+              
+              
               onSelectedRowsChange={handleChange}
+        
+           
             />
           </Card>
         </div>

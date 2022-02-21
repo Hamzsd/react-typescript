@@ -25,6 +25,11 @@ export default function Table(props:{title?: string, row?:any[], col?:any[]}) {
           sortIcon={<SortIcon />}
           pagination
           selectableRows
+          pointerOnHover
+          highlightOnHover
+          responsive
+          theme="dark"
+          
         />
       </Card>
     </div>

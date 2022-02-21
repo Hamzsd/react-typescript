@@ -94,7 +94,7 @@ export default function FormDialog() {
             </DialogContent>
             <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={() => name && desc && mMat && saveMaterial() && console.log(name,desc,mMat)}>Add</Button>
+            <Button onClick={() => name && desc && mMat && saveMaterial()&& window.location.reload()}>Add</Button>
             </DialogActions>
         </Dialog>
         </div>
