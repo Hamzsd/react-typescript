@@ -1,10 +1,7 @@
 import React from "react";
 import MetaMaterialsTable from './MetaMaterials';
 import MaterialsTable from './Materials';
-import AddMaterial from './AddMaterial';
-import DeleteMaterial from './DeleteMaterial';
-import EditMaterial from './DeleteMaterial';
-import Stack from '@mui/material/Stack';
+import MaterialParams from "./MaterialParameter";
 
 
 
@@ -29,6 +26,15 @@ export function MetaMaterials (){
     return (
         <>
             <MetaMaterialsTable/>
+        </>
+    )
+}
+
+
+export function MaterialParameter (){
+    return (
+        <>
+            <MaterialParams/>
         </>
     )
 }

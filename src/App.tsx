@@ -6,7 +6,11 @@ import Drawer from '@material-ui/core/Drawer'
 import Container from '@material-ui/core/Container'
 import AppMenu from './AppMenu'
 import {Route,Routes} from "react-router-dom"
-import {Home,Materials,MetaMaterials} from './components/pages'
+import {Home,Materials,MetaMaterials,MaterialParameter} from './components/pages'
+// import Try from './components/try';
+
+
+
 
 const App: React.FC = () => {
   const classes = useStyles()
@@ -25,10 +29,12 @@ const App: React.FC = () => {
         <Container maxWidth="lg" className={classes.container}>
          <div>
            <h2>IG Creator</h2>
+          
            <Routes>
             <Route path ="/" element={<Home/>}></Route>
             <Route path="/materials" element={<Materials/>}/>
-            <Route path="/metaMaterials" element={<MetaMaterials/>}/>
+            <Route path="/metaMaterials" element={<MetaMaterials/>}/> 
+            <Route path="/parameters" element={<MaterialParameter/>}/>
            </Routes>
          </div>
         </Container>

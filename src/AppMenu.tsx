@@ -20,6 +20,7 @@ const AppMenu: React.FC = () => {
   const navigate = useNavigate();
   const home = useCallback(() => navigate('/', {replace: true}), [navigate]);
   const materials = useCallback(() => navigate('/materials', {replace: true}), [navigate]);
+  const parameters = useCallback(() => navigate('/parameters', {replace: true}), [navigate]);
   const metaMaterials = useCallback(() => navigate('/metaMaterials', {replace: true}), [navigate]);
 
   const classes = useStyles()
@@ -80,6 +81,9 @@ const AppMenu: React.FC = () => {
           </ListItem>
           <ListItem button className={classes.menuItem} onClick={metaMaterials}>
             <ListItemText inset primary="MetaMaterial" />
+          </ListItem>
+          <ListItem button className={classes.menuItem} onClick={parameters}>
+            <ListItemText inset primary="Parameters" />
           </ListItem>
         </List>
       </Collapse>
