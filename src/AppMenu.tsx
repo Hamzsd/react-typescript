@@ -46,27 +46,6 @@ const AppMenu: React.FC = () => {
         <ListItemText primary="Login" />
       </ListItem>
 
-      <ListItem button className={classes.menuItem}>
-        <ListItemIcon className={classes.menuItemIcon}>
-          <AdminPanelSettingsIcon/>
-        </ListItemIcon>
-        <ListItemText primary="Admin" />
-      </ListItem>
-
-      <ListItem button className={classes.menuItem}>
-        <ListItemIcon className={classes.menuItemIcon}>
-          <SettingsIcon/>
-        </ListItemIcon>
-        <ListItemText primary="Settings" />
-      </ListItem>
-
-      <ListItem button className={classes.menuItem}>
-        <ListItemIcon className={classes.menuItemIcon}>
-          <PublishIcon/>
-        </ListItemIcon>
-        <ListItemText primary="Import" />
-      </ListItem>
-
       <ListItem button onClick={handleClick} className={classes.menuItem}>
         <ListItemIcon className={classes.menuItemIcon}>
         </ListItemIcon>
@@ -87,25 +66,7 @@ const AppMenu: React.FC = () => {
           </ListItem>
         </List>
       </Collapse>
-
-      <ListItem button className={classes.menuItem}>
-        <ListItemIcon className={classes.menuItemIcon}>
-        </ListItemIcon>
-        <ListItemText primary="Products" />
-      </ListItem>
           
-      <ListItem button className={classes.menuItem}>
-        <ListItemIcon className={classes.menuItemIcon}>
-        </ListItemIcon>
-        <ListItemText primary="Export" />
-      </ListItem>
-
-
-      <ListItem button className={classes.menuItem}>
-        <ListItemIcon className={classes.menuItemIcon}>
-        </ListItemIcon>
-        <ListItemText primary="Support" />
-      </ListItem>
     </List>
   )
 }

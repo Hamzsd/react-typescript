@@ -16,7 +16,7 @@ export default function DeleteMaterial(props:{id:string[]}){
       });
     return (
         <div>
-            <Button variant="contained" color="error" size="small" onClick={() => props.id && delMaterial() && window.location.reload()}>
+            <Button variant="contained" color="error" size="small" onClick={(notify) => props.id && delMaterial() && window.location.reload()}>
                 <DeleteIcon/>
             </Button>
         </div>

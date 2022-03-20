@@ -12,7 +12,8 @@ import SketchExample from './ColorPicker'
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 import { Dialog, DialogTitle, DialogContent, makeStyles, Typography } from '@material-ui/core';
-import Stack from '@mui/material/Stack';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface metaMaterial {
     name: string;
@@ -64,7 +65,6 @@ const SAVE_PARAMERTER_MATERIAL = gql `mutation addParams($ambient:String!,$diffu
  }`; 
 
 
-
 export default function FormDialog() {
     let materialParams:parameters = {};
 
@@ -110,6 +110,14 @@ export default function FormDialog() {
         }
     });
 
+    const notify = () =>{
+        saveMaterial()
+        saveParamsMaterial()
+        handleClose()
+        toast.success("Material Added",{position:toast.POSITION.TOP_RIGHT, autoClose:1000})
+        window.location.reload()
+    }
+
     const { loading, data } =  useQuery<listMetaMaterials>(META_MATERIAL_QUERY);
     if (loading) return <p>Loading...</p>;
 
@@ -121,7 +129,7 @@ export default function FormDialog() {
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Add Material</DialogTitle>
             <DialogContent>
-            <Box lg={{ flexGrow: 1 }}>
+            <Box>
                 <br></br>
                 <Grid container spacing={1}>
                     <Grid item xs={4}>
@@ -159,7 +167,7 @@ export default function FormDialog() {
             </DialogContent>
             <DialogActions>
                 <Button variant="contained" onClick={handleClose}>Cancel</Button>
-                <Button variant="contained" onClick={() => saveMaterial() && saveParamsMaterial()  && window.location.reload() }>Add</Button>
+                <Button variant="contained" onClick={notify}>Add</Button>
             </DialogActions>
         </Dialog>
         </div>

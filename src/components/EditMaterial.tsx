@@ -121,8 +121,6 @@ export default function EditMaterial(props:{name?:string,desc?:string, mMat?:str
         variables: { name:props.name,newName:updateName,desc:props.desc,mMat:props.mMat }
     });
 
-  
-      
     const { loading, data } =  useQuery<listMetaMaterials>(META_MATERIAL_QUERY);
     if (loading) return <p>Loading...</p>;
 
@@ -134,7 +132,7 @@ export default function EditMaterial(props:{name?:string,desc?:string, mMat?:str
          <Dialog open={open} onClose={handleClose}>
          <DialogTitle>Update Material</DialogTitle>
          <DialogContent>
-         <Box lg={{ flexGrow: 1 }}>
+         <Box>
                 <br></br>
                 <Grid container spacing={1}>
                     <Grid item xs={6}>

@@ -4,6 +4,7 @@ import { SketchPicker } from 'react-color'
 
 
 
+
 function hexToRgb(hex:string) {
   var bigint = parseInt(hex, 16);
 
@@ -59,7 +60,7 @@ class SketchExample extends React.Component {
           cursor: 'pointer',
         },
         popover: {
-          position: 'absolute',
+          position: 'sticky',
           zIndex: '2',
         },
         cover: {

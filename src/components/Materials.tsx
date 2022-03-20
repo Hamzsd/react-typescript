@@ -77,7 +77,6 @@ export default function MaterialsTable(){
         <div>
         <Stack direction="row" spacing={1} justifyContent="right">
             <AddMaterial/>
-            {/* <Try/> */}
             <EditMaterial name={editMat.name} desc={editMat.description} mMat={editMat.metaMaterial}/>
             <DeleteMaterial id={matName}/>
         </Stack>

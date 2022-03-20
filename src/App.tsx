@@ -7,11 +7,11 @@ import Container from '@material-ui/core/Container'
 import AppMenu from './AppMenu'
 import {Route,Routes} from "react-router-dom"
 import {Home,Materials,MetaMaterials,MaterialParameter} from './components/pages'
-// import Try from './components/try';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-
-
+toast.configure()
 const App: React.FC = () => {
   const classes = useStyles()
   return (
